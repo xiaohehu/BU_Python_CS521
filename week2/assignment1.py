@@ -6,8 +6,8 @@ sentence = ["Man verb on a adjective noun.", "Noun verb to the adjective ground.
 results = []
 
 # Get the input value from user and check if it's a correct input
-keepPlay = True
-while keepPlay:
+runTheGame = True
+while runTheGame:
 	line = input("integer: ")
 	if line:
 		try:
@@ -38,19 +38,19 @@ while keepPlay:
 			print("The sentence is already in the list! \n")
 		else:
 			results.append(pickedSentence)
-		print("The current results are: \n")
+		print("\nThe current results are: \n")
 		for item in results:
 			print(item)
 		
-		inputPlay = True
-		while inputPlay:
-			play = input("Do you want to keep playing? (y/n) ")
+		keepPlay = True
+		while keepPlay:
+			play = input("\nDo you want to keep playing? (y/n) ")
 			
 			if play.isalpha():
-				if play is "y":
+				if play is "y" or play is "Y":
 					break
-				elif play is "n":
-					keepPlay = False
+				elif play is "n" or play is "N":
+					runTheGame = False
 					break
 				else:
 					print("Please input a \"y\" or \"n\"!")
