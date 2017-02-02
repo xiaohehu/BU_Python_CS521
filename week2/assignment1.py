@@ -19,34 +19,40 @@ while runTheGame:
 		print("The input integer must be positive!")
 		continue
 	else:
-		# Get index
+		# Get index for each list
 		indexSentence = number % len(sentence)
 		indexNouns = number % len(nouns)
 		indexVerbs = number % len(verbs)
 		indexAdj = number % len(adjs)
+		
 		# Get values for picked item in each list
 		pickedNoun = nouns[indexNouns]
 		pickedVerb = verbs[indexVerbs]
 		pickedAdj = adjs[indexAdj]
 		pickedSentence = sentence[indexSentence]
 		
+		# Replace "verb" "adjecvite" and "noun" in the list by picked word
 		pickedSentence = pickedSentence.replace("verb", pickedVerb)
 		pickedSentence = pickedSentence.replace("adjective", pickedAdj)
 		pickedSentence = pickedSentence.replace("noun", pickedNoun)
 		
+		# Check if the current made sentence is already in the result list
 		if pickedSentence in results:
 			print("The sentence is already in the list! \n")
 		else:
 			results.append(pickedSentence)
 		print("\nThe current results are: \n")
+		# Go through the result list and print out all items
 		for item in results:
 			print(item)
 		
+		# Let user input and check if the game should continue
 		keepPlay = True
 		while keepPlay:
 			play = input("\nDo you want to keep playing? (y/n) ")
 			
 			if play.isalpha():
+				play.lower()
 				if play is "y" or play is "Y":
 					break
 				elif play is "n" or play is "N":
