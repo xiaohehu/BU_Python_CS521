@@ -52,10 +52,10 @@ while runTheGame:
 			play = input("\nDo you want to keep playing? (y/n) ")
 			
 			if play.isalpha():
-				play.lower()
-				if play is "y" or play is "Y":
+				play = play.lower()
+				if play == "y":
 					break
-				elif play is "n" or play is "N":
+				elif play == "n":
 					runTheGame = False
 					break
 				else:
