@@ -8,6 +8,7 @@ results = []
 # Get the input value from user and check if it's a correct input
 runTheGame = True
 while runTheGame:
+	# Check input value is validate or not
 	line = input("integer: ")
 	if line:
 		try:
@@ -31,7 +32,7 @@ while runTheGame:
 		pickedAdj = adjs[indexAdj]
 		pickedSentence = sentence[indexSentence]
 		
-		# Replace "verb" "adjecvite" and "noun" in the list by picked word
+		# Replace "verb" "adjecvite" and "noun" in the list by picked words
 		pickedSentence = pickedSentence.replace("verb", pickedVerb)
 		pickedSentence = pickedSentence.replace("adjective", pickedAdj)
 		pickedSentence = pickedSentence.replace("noun", pickedNoun)
@@ -42,16 +43,18 @@ while runTheGame:
 		else:
 			results.append(pickedSentence)
 		print("\nThe current results are: \n")
+		
 		# Go through the result list and print out all items
 		for item in results:
 			print(item)
 		
-		# Let user input and check if the game should continue
+		# Let user input and check if the game should continue or not
 		keepPlay = True
 		while keepPlay:
 			play = input("\nDo you want to keep playing? (y/n) ")
 			
 			if play.isalpha():
+				# Make the program not case sensitive
 				play = play.lower()
 				if play == "y":
 					break
