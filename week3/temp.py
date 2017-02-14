@@ -13,7 +13,6 @@ Step 2: Read the csv file, put each number into a list. And convert all str to i
 with open("number.csv", "r") as numberFile:
 	numberList = [int(x) for x in numberFile.read().splitlines()]
 numberFile.close()
-# Convert str to int
 
 """
 Step 3: Print content of the list
