@@ -11,13 +11,12 @@ Step 2: Read the csv file, put each number into a list. And convert all str to i
 """
 # Read file
 with open("number.csv", "r") as numberFile:
-	numberListStr = numberFile.read().splitlines()
+	numberList = [int(x) for x in numberFile.read().splitlines()]
 numberFile.close()
 # Convert str to int
-numberListInt = [int(x) for x in numberListStr]
-	
+
 """
 Step 3: Print content of the list
 """
-for item in numberListInt:
+for item in numberList:
 	print(item)
