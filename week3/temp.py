@@ -14,9 +14,7 @@ with open("number.csv", "r") as numberFile:
 	numberListStr = numberFile.read().splitlines()
 numberFile.close()
 # Convert str to int
-numberListInt = []
-for i in numberListStr:
-	numberListInt.append(int(i))
+numberListInt = [int(x) for x in numberListStr]
 	
 """
 Step 3: Print content of the list
