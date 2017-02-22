@@ -13,11 +13,9 @@ def load_csv_to_list(path_to_file):
     #Validate Path to file exists
     if not os.path.exists(path_to_file):
       print("Path to file does NOT exist!")
-      return resultList
     #Validate file exists
     elif not os.path.isfile(path_to_file):
       print("The file does NOT exist in the path!")
-      return resultList
     #Return a list of items from file
     else:
       with open(path_to_file, "r") as readFile:
@@ -153,7 +151,10 @@ NOUNS = load_mad_lib_resource(os.path.join(resourcePath, "Nouns.csv"))
 VERBS = load_mad_lib_resource(os.path.join(resourcePath, "Verbs.csv"))
 ADJECTIVES = load_mad_lib_resource(os.path.join(resourcePath, "Adjectives.csv"))
 while len(SENTENCES) == 0 or len(NOUNS) == 0 or len(VERBS) == 0 or len(ADJECTIVES) == 0:
+    # Create .csv files to resource folder
     createResourceFiles(resourcePath)
+    # After creating .csv files go back to orginal folder
+    os.chdir(currentPath)
     SENTENCES = load_mad_lib_resource(os.path.join(resourcePath, "Senteces.csv"))
     NOUNS = load_mad_lib_resource(os.path.join(resourcePath, "Nouns.csv"))
     VERBS = load_mad_lib_resource(os.path.join(resourcePath, "Verbs.csv"))
