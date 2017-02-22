@@ -1,6 +1,6 @@
 '''
-This file is a template that may be used for Assignment 2.  The intent is to supply
-you with some code so you can focus on the new items in the program
+Xiaohe Hu
+Assignment 2
 '''
 import operator
 import os
