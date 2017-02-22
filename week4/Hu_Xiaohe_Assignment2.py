@@ -87,6 +87,11 @@ def play_game(user_sentences,lower_bound, upper_bound):
           if sentence not in user_sentences:
             user_sentences.append(sentence)
             user_sentences.sort()
+            #Save the current user data to a .csv file
+            with open(userDataFile, "w") as userData:
+                for i in user_sentences:
+                  userData.write(i + "\n")
+            userData.close()
           else:
             print("This sentence is already in data file!")
           #PRINT ALL OF THE SENTENCES FOR THE USER THUS FAR
@@ -194,9 +199,4 @@ user_sentences.sort()
 #CALL PLAY GAME FUNCTION
 play_game(user_sentences, MIN_VALUE, MAX_VALUE)
 
-#Save the current user data to a .csv file
-with open(userDataFile, "w") as userData:
-    for i in user_sentences:
-        userData.write(i + "\n")
-userData.close()
 print("Bye!")
