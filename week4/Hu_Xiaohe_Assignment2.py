@@ -6,6 +6,7 @@ import operator
 import os
 import random
 import sys
+import csv
 
 
 def load_csv_to_list(path_to_file):
@@ -89,8 +90,14 @@ def play_game(user_sentences,lower_bound, upper_bound):
             user_sentences.sort()
             #Save the current user data to a .csv file
             with open(userDataFile, "w") as userData:
-                for i in user_sentences:
-                  userData.write(i + "\n")
+                for i in range(len(user_sentences)):
+                  writer = csv.writer(userData, delimiter = ",")
+                  elementList = []
+                  element = []
+                  element.append(user_sentences[i])
+                  element.append(str(i + 1))
+                  elementList.append(element)
+                  writer.writerows(elementList)
             userData.close()
           else:
             print("This sentence is already in data file!")
@@ -192,7 +199,9 @@ user_sentences = []
 #GET THE USER'S SAVED GAMES IF IT EXISTS
 if hasUserData:
     with open(userDataPath, "r") as userData:
-        user_sentences = userData.read().splitlines()
+         reader = csv.reader(userData, delimiter=",")
+         for i in reader:
+           user_sentences.append(i[0])
     userData.close()
 #SORT THE USER SENTENCES
 user_sentences.sort()
