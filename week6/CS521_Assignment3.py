@@ -1,14 +1,15 @@
 class Pet:
-    #Create two variables kind and color; assign values
+    #Create two variables kind and color; assign values    kind = "animal"
+    color = "black"
 
     def __init__(self, name):
-        #In the constructor, initialize the pets name
+        #In the constructor, initialize the pets name        self.name = name
 
     def do_tricks(self):
         
-        #Print the name of the pet and that it is doing tricks
-        #Call the speak method
-        #Call the jump method
+        #Print the name of the pet and that it is doing tricks        print(self.name + "is doing tricks")
+        #Call the speak method        self.speak
+        #Call the jump method        self.jump
 
     def speak(self):
         pass
@@ -16,21 +17,28 @@ class Pet:
     def jump(self):
         pass
 
-class Jumper:
+class Jumper(Pet):
     'This is a mixin class for jump'
     def jump(self):
-        #Create jump method that prints that a Pet is jumping and the pets name
+        #Create jump method that prints that a Pet is jumping and the pets name        print("A pet named " + super().name + " is jumping")
 
-class Dog:  #You will need to inherit for this to work
+class Dog(Pet):  #You will need to inherit for this to work
 
-    #Change kind to canine
-
+    #Change kind to canine    kind = "canine"
+        def __init__(self, name, desc, owner):
+        super().__init__(name)
+        self.desc = desc
+        self.owner = owner
+
     def __str__(self):
-        #Print the name and description of dog
+        #Print the name and description of dog        print(self.name + "\n")
+        print(self.desc)
 
     def __call__(self, action):
-        #Rollover action prints the name of the dog and that it is rolling over
-        #Owner action returns the name of the owner
+        #Rollover action prints the name of the dog and that it is rolling over        if action == "Rollover":
+            print(self.name + " is rolling over")
+        #Owner action returns the name of the owner        elif action == "Owner":
+            print(self.owner)
         
 
 class BigDog:  #You will need to inherit for this to work
