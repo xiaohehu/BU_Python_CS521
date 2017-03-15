@@ -35,7 +35,7 @@ class Pet:
 
 
 
-class Jumper(Pet):
+class Jumper():
 
     #'This is a mixin class for jump'
 
