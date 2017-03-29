@@ -1,8 +1,8 @@
 # DEFINITIONS
 class MyException(Exception):
 	def __init__(self):
-		print('Found # Error!')
-	
+		pass
+			
 	def __str__(self):
 		return ('Found the symbol # from the input string!')
 
