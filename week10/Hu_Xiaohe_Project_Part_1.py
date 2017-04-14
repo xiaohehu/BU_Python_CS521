@@ -1,11 +1,12 @@
 import os
 import csv
 
+# Abstract class for record
 class AbstractRecord:
 	def __init__(self, name = None):
 		self.name = name
 	
-
+# Class of Stocks Stat class
 class StockStatRecord(AbstractRecord):
 	def __init__(self, name = None, company_name = None, exchange_country = None,
 	price = None, exchange_rate = None, shares_outstanding = None, net_income = None, market_value_usd = None, pre_ratio = None):
@@ -18,9 +19,11 @@ class StockStatRecord(AbstractRecord):
 		self.net_income = net_income
 		self.market_value_usd = market_value_usd
 		self.pre_ratio = pre_ratio
+
 	def __str__(self):
 		return "Stock symbol: {}, Company name: {}, Exchange country: {}, Stock Price: {:.2f}, Exchange Rate: {:.2f}, Shares Outstanding:{:.2f}, Net Income:{:.2f}, Market Value in USD: {:.2f}, Price/Earnings Ratio: {:.2f}".format(self.name, self.company_name, self.exchange_country, self.price, self.exchange_rate, self.shares_outstanding, self.net_income, self.market_value_usd, self.pre_ratio)
 		
+# Class of Baseball Stat Record
 class BaseballStatRecord(AbstractRecord):
 	def __init__(self, name, salary, games, avg):
 		super().__init__(name)
