@@ -55,11 +55,10 @@ class AbstractCSVReader:
 		while i < len(dataList):
 			try:
 				self.row_to_record(dataList[i])
-				i += 1
 			except BadData:
-				i += 1
-				continue
-			
+				pass
+			finally:
+				i += 1	
 
 class StockCSVReader(AbstractCSVReader):
 	def __init__(self, filePath):
@@ -99,7 +98,7 @@ class StockCSVReader(AbstractCSVReader):
 			self.recordList.append(stockRrecord)		
 	
 	def load(self):
-		super(StockCSVReader, self).load()
+		super().load()
 		return tuple(self.recordList)
 
 class BaseballCSVReader(AbstractCSVReader):
@@ -127,7 +126,7 @@ class BaseballCSVReader(AbstractCSVReader):
 		self.recordList.append(baseballRecord)
 	
 	def load(self):
-		super(BaseballCSVReader, self).load()
+		super().load()
 		return tuple(self.recordList)
 		
 class BadData(Exception):
