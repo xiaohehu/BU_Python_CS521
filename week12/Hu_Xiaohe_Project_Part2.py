@@ -151,7 +151,7 @@ class AbstractDAO:
 	def connect(self):
 		conn = sqlite3.connect(self.db_name)
 		return conn
-	
+# Create class baseball stats DAO	
 class BaseballStatsDAO(AbstractDAO):
 	
 	def __init__(self, db_name = None):
@@ -180,6 +180,7 @@ class BaseballStatsDAO(AbstractDAO):
 		cur.execute("SELECT player_name, games_played, average, salary FROM baseball_stats;")
 		
 		rows = cur.fetchall()
+		# Add BaseballStat to the deque
 		for row in rows:
 			baseball = BaseballStatRecord(row[0], row[1], row[2], row[3])
 			collection.append(baseball)
@@ -190,7 +191,8 @@ class BaseballStatsDAO(AbstractDAO):
 	
 	def connect(self):
 			return super().connect()
-			
+
+# Create class StockStatsDAO			
 class StockStatsDAO(AbstractDAO):
 	
 	def __init__(self, db_name = None):
@@ -224,6 +226,7 @@ class StockStatsDAO(AbstractDAO):
 		cur.execute("SELECT company_name, ticker, country, price, exchange_rate, shares_outstanding, net_income, market_value, pe_ratio FROM stock_stats;")
 		
 		rows = cur.fetchall()
+		# Add each StockStat to deque
 		for row in rows:
 			stock = StockStatRecord(row[0], row[1], row[2], row[3], row[4], row[5], row[6], row[7], row[8])
 			collection.append(stock)
@@ -248,6 +251,7 @@ if __name__ == "__main__":
 	stockDBInstance = StockStatsDAO("stocks.db")
 	baseballDBInstance = BaseballStatsDAO("baseball.db")
 	
+	# Add data to database
 	for stockRecord in stockRecordList:
 		stockDBInstance.insert_records(stockRecord)
 		
@@ -269,6 +273,14 @@ if __name__ == "__main__":
 	baseballDict = {}
 	i = 0
 	avg_salary = 0
-	
+	sum_salary = 0
 	for baseballStat in baseballDeque:
+		baseballDict[round(baseballStat.avg, 3)] = format(baseballStat.salary, '.2f')
+		i += 1
 		
+	for key in baseballDict:
+		sum_salary += float(baseballDict[key])
+	print(baseballDict)
+	print('\n')
+	avg_salary = sum_salary / i
+	print('The average salary is: {:.2f}'.format(avg_salary))			
