@@ -271,16 +271,14 @@ if __name__ == "__main__":
 	
 	baseballDeque = baseballDBInstance.select_all()
 	baseballDict = {}
-	i = 0
 	avg_salary = 0
 	sum_salary = 0
 	for baseballStat in baseballDeque:
 		baseballDict[round(baseballStat.avg, 3)] = format(baseballStat.salary, '.2f')
-		i += 1
 		
 	for key in baseballDict:
 		sum_salary += float(baseballDict[key])
 	print(baseballDict)
 	print('\n')
-	avg_salary = sum_salary / i
+	avg_salary = sum_salary / len(baseballDict)
 	print('The average salary is: {:.2f}'.format(avg_salary))			
